@@ -16,7 +16,8 @@ int main()
         hMinMax = create_thread(min_max);
         hAverage = create_thread(average);
 
-        wait_threads(hMinMax, hAverage);
+        wait_thread(hMinMax);
+        wait_thread(hAverage);
 
         replace_min_max();
 
@@ -27,7 +28,8 @@ int main()
         std::cerr << "Error: " << e.what() << std::endl;
     }
 
-    close_threads(hAverage, hMinMax);
+    close_thread(hAverage);
+    close_thread(hMinMax);
     delete_array();
 
     return 0;

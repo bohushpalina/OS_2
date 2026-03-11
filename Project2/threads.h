@@ -12,8 +12,8 @@ extern int max_val;
 extern double avg_val;
 
 HANDLE create_thread(LPTHREAD_START_ROUTINE func);
-void wait_threads(HANDLE t1, HANDLE t2);
-void close_threads(HANDLE t1, HANDLE t2);
+void wait_thread(HANDLE t1);
+void close_thread(HANDLE t1);
 
 DWORD WINAPI min_max(LPVOID param);
 DWORD WINAPI average(LPVOID param);

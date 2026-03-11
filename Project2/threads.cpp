@@ -24,21 +24,16 @@ HANDLE create_thread(LPTHREAD_START_ROUTINE func)
     return hThread;
 }
 
-void wait_threads(HANDLE t1, HANDLE t2)
+void wait_thread(HANDLE t1)
 {
     if (WaitForSingleObject(t1, INFINITE) == WAIT_FAILED)
         throw std::runtime_error("WaitForSingleObject failed: " + get_last_error_message());
 
-    if (WaitForSingleObject(t2, INFINITE) == WAIT_FAILED)
-        throw std::runtime_error("WaitForSingleObject failed: " + get_last_error_message());
 }
 
-void close_threads(HANDLE t1, HANDLE t2)
+void close_thread(HANDLE t1)
 {
     if (t1 && !CloseHandle(t1))
-        std::cerr << "CloseHandle failed: " << get_last_error_message() << std::endl;
-
-    if (t2 && !CloseHandle(t2))
         std::cerr << "CloseHandle failed: " << get_last_error_message() << std::endl;
 }
 
